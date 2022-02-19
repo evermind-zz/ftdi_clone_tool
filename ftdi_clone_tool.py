@@ -1,5 +1,6 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # FTDI Clone Tool v0.2 by @marcan42
+# 2022-02-19 make it work with python3 @evermind
 # Licensed under the terms of the 2-clause BSD license, which follow:
 #
 # Copyright (c) 2014 Hector Martin <hector@marcansoft.com>
@@ -64,7 +65,7 @@ class FTDIDevice(object):
                                request=0x09,
                                value=0x77,
                                index=1,
-                               buffer="",
+                               buffer=0,
                                timeout=self.timeout)
 
     def read_eeprom(self, addr):
@@ -82,7 +83,7 @@ class FTDIDevice(object):
                                request=0x91,
                                value=data,
                                index=addr,
-                               buffer="",
+                               buffer=0,
                                timeout=self.timeout)
 
     def calc_checksum(self, eeprom):
